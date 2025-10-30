@@ -1,1 +1,48 @@
+<head>
+  <script type="text/javascript" src="pako.js"></script>
+  <style>
+    body {
+      background-color: lightblue;
+      font-family: "Monospace", Courier New;
+    }
+  </style>
+</head>
+<body>
+  <h1>Aqueryus</h1>
+  <p>Create a small portfolio for free today</p>
 
+  <textarea id="HTML"></textarea>
+  <a id="URL"></a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+  <script>
+  const textarea = document.getElementById('HTML');
+  const output = document.getElementById('URL');
+
+  textarea.addEventListener('input', () => {
+    const input = textarea.value;
+
+    // 1. Compress the input using pako.gzip, returns Uint8Array
+    const compressed = pako.gzip(input);
+    
+
+    // 2. Convert Uint8Array to binary string for base64 encoding
+    function uint8ToString(u8Arr) {
+      let str = "";
+      for (let i = 0; i < u8Arr.length; i++) {
+        str += String.fromCharCode(u8Arr[i]);
+      }
+      return str;
+    }
+    const binaryString = uint8ToString(compressed);
+
+    // 3. Base64 encode using btoa
+    const base64 = btoa(binaryString);
+
+    const base64url = base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+    // Show output
+    output.href = "https://Aqueryus.github.io/show?data=" + base64url;
+    output.textContent = "https://Aqueryus.github.io/show?data=" + base64url;
+  });
+  </script>
+</body>
