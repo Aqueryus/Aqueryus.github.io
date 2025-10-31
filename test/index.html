@@ -6,14 +6,23 @@
       font-family: "Monospace", Courier New;
     }
   </style>
+  <meta name="description" content="The Home page of Aqueryus, a tool that allows you to Create Simple Permalinks from HTML data">
 </head>
 <body>
   <h1>Aqueryus</h1>
-  <p>Create a small portfolio for free today</p>
+  <p>Permalinks for every need!</p>
 
   <textarea id="HTML"></textarea>
   <a id="URL"></a>
+  <br>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+  <br>
+  <h2>How to use Aqueryus</h2>
+  <p>Simply type HTML into the text box, and a link will appear. Click on the link to get your HTML-based page!</p>
+  <h2>Can I use Javascript?</h2>
+  <p>Unfortunately, no. Because of possible JS-Injection and malicious code, we have Javascript blocked off.</p>
+  <h2>Can I put images into the sites?</h2>
+  <p>As of right now, there are only two ways to put images onto Aqueryus. The first is hosting images, which is the recommended way. Secondly, you can convert images into base64, which may be supported as a feature later in development. </p>
   <script>
   const textarea = document.getElementById('HTML');
   const output = document.getElementById('URL');
